@@ -1,4 +1,4 @@
-function shapley(charFunc)
+function shapleyValueCalculator(charFunc)
 clc;
 tic;
 [numPlayers, coalitions] = assignCharFunctionToCoalitions(charFunc);
@@ -61,21 +61,21 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function subsets = generateOrderedSubsets(n)
 subsets = [];
-aux = [];
+decimalExpression = [];
 
-all_subsets = fliplr(dec2bin(0:2^n-1)-'0');
+allSubsets = fliplr(dec2bin(0:2^n-1)-'0');
 
 for i=1:n
-    all_subsets(:,i) = i*all_subsets(:,i);
+    allSubsets(:,i) = i*allSubsets(:,i);
 end
 
 for i=2:2^n
-    aux = [aux str2double(sprintf('%d',all_subsets(i, all_subsets(i,:)~=0)))];    
+    decimalExpression = [decimalExpression str2double(sprintf('%d',allSubsets(i, allSubsets(i,:)~=0)))];    
 end
-aux = [0 sort(aux)];
+decimalExpression = [0 sort(decimalExpression)];
 
 for i=1:2^n
-    subsets(i).players = num2str(aux(i))-'0';
+    subsets(i).players = num2str(decimalExpression(i))-'0';
 end
 subsets(1).players = [];
 end
