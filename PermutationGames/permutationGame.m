@@ -1,5 +1,5 @@
-function v = permutation_game(A)
-[filas, columnas] = size(A);
+function v = permutationGame(C)
+[filas, columnas] = size(C);
 if filas ~= columnas
     error('Wrong matrix');
 end
@@ -9,22 +9,22 @@ v = zeros(1, 2^filas-1);
 subsets = generateOrderedSubsets(filas);
 
 for index_coalition = 2:length(subsets)    
-    v(index_coalition-1) = calculate_savings(A, subsets(index_coalition));
+    v(index_coalition-1) = calculate_savings(C, subsets(index_coalition));
 end
 
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function savings = calculate_savings(A, subset)
+function savings = calculate_savings(C, subset)
 
-original_cost = sum(A(sub2ind(size(A),subset.players,subset.players)));
+original_cost = sum(C(sub2ind(size(C),subset.players,subset.players)));
 
 permutation_set = perms(subset.players);
 num_permutations = factorial(length(subset.players));
 min_cost = zeros(1, num_permutations);
 
 for i=1:num_permutations
-    min_cost(i) = sum(A(sub2ind(size(A),subset.players,permutation_set(i,:))));
+    min_cost(i) = sum(C(sub2ind(size(C),subset.players,permutation_set(i,:))));
 end
 
 savings = original_cost - min(min_cost);
