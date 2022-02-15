@@ -1,7 +1,14 @@
 function Shapley_p = shapleyValue_p_Calculator(charFunc,lambda,partition)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Input:
 %data = charFunc = v = [v(1), v(2), v(3), v(12), v(13), v(23), ....]
 %lambda = [lambda(player1), ..., lambda(playerN)];
 %partition = [1, 23, 4] (for example)
+%
+%Output: Shapley vector
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 [numPlayers, coalitions] = assignCharFunctionToCoalitions(charFunc);
 checkInputParametersAreCorrect(numPlayers, lambda, partition);
 

@@ -1,6 +1,18 @@
 function shapleyValueCalculator(charFunc)
-clc;
-tic;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Input: charFunc
+%Vector corresponding to the characteristic function of a set of n players.
+%The elements of this vector are arranged in the following way:
+% [ "Subsets of 1 player" "Subsets of 2 players" ... "Subset of n players"]
+% The elements of the subsets of k players has to be arranged in lexicografic
+% order.
+% Example: 4 players
+% [1 2 3 4   12 13 14 23 24 34  123 124 134 234  1234] 
+%
+%Output: Shapley vector
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 [numPlayers, coalitions] = assignCharFunctionToCoalitions(charFunc);
 shapleyVector = zeros(1, numPlayers);
 
@@ -22,7 +34,6 @@ end
  
 disp('Shapley Vector');
 disp(shapleyVector);
-toc;
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function response = playerBelongsToCoalition (coalition, player)

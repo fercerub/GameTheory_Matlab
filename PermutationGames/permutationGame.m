@@ -1,4 +1,20 @@
 function v = permutationGame(C)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Input: C
+%Cost matrix. The element C(i, j) = c represents the cost c for player i
+%when using machine j.
+%
+%Output: Characteristic function
+%Represents the savings of each coalition. 
+%The elements of this vector are arranged in the following way:
+% [ "Subsets of 1 player" "Subsets of 2 players" ... "Subset of n players"]
+% The elements of the subsets of k players are arranged in lexicografic
+% order.
+% Example: 4 players
+% [1 2 3 4   12 13 14 23 24 34  123 124 134 234  1234] 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 [filas, columnas] = size(C);
 if filas ~= columnas
     error('Wrong matrix');
